@@ -24,6 +24,7 @@ tests/
 
 - Page Object Model design pattern
 - Separate UI and API tests
+- Test categorization with tags (@smoke, @regression, @ui, @api)
 - Allure reporting integration
 - GitHub Actions CI/CD integration
 - Cross-browser testing support
@@ -49,6 +50,9 @@ tests/
    
    # Run specific test file
    npx playwright test modules/login/ui/login.spec.js
+   
+   # Run tests by tag
+   npx playwright test --grep "@smoke"
    
    # Run with Allure reporting
    npx playwright test --reporter=allure-playwright
@@ -87,6 +91,7 @@ The report includes:
 - Test duration and retries
 - Environment details
 - Historical trends
+- Test categorization by tags
 
 #### Playwright Report
 In addition to the Allure report, the Playwright HTML report is also available as an artifact in the GitHub Actions workflow run. To view it:
