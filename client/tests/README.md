@@ -54,7 +54,7 @@ tests/
    npx playwright test --reporter=allure-playwright
    ```
 
-3. Generate Allure report:
+3. Generate and view Allure report locally:
    ```bash
    allure generate allure-results -o allure-report --clean
    allure open allure-report
@@ -66,4 +66,32 @@ Tests are automatically run on GitHub Actions when:
 - A pull request is created/updated
 - Code is merged to main branch
 
-The workflow can be found in `.github/workflows/playwright.yml` 
+The workflow can be found in `.github/workflows/playwright.yml`
+
+### Viewing Test Reports in CI/CD
+
+#### Allure Reports
+After each workflow run, the Allure report is automatically deployed to GitHub Pages and can be accessed at:
+```
+https://<username>.github.io/<repository-name>/
+```
+
+For example, if your GitHub username is "raj-tester" and repository is "test_automation_project", the report will be at:
+```
+https://raj-tester.github.io/test_automation_project/
+```
+
+The report includes:
+- Test execution results
+- Test steps and screenshots
+- Test duration and retries
+- Environment details
+- Historical trends
+
+#### Playwright Report
+In addition to the Allure report, the Playwright HTML report is also available as an artifact in the GitHub Actions workflow run. To view it:
+
+1. Go to the Actions tab in your repository
+2. Click on the workflow run
+3. Scroll down to "Artifacts"
+4. Download and extract "playwright-report" 
