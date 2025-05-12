@@ -67,7 +67,7 @@ cd ../client
 npm start
 ```
 
-The React app will be available at `http://localhost:3000` and the API at `http://localhost:5000`.
+The React app will be available at `http://localhost:3000` and the API at `http://localhost:5001`.
 
 ## License
 MIT 

@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 const USERS_FILE = path.join(__dirname, 'users.json');
 
 app.use(cors({

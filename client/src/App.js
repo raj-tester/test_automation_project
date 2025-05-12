@@ -11,7 +11,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/me')
+    axios.get('http://localhost:5001/api/me')
       .then(res => setUser(res.data))
       .catch(() => setUser(null));
   }, []);
@@ -20,7 +20,7 @@ function App() {
     e.preventDefault();
     setMessage('');
     try {
-      await axios.post('http://localhost:5000/api/signup', { email, password });
+      await axios.post('http://localhost:5001/api/signup', { email, password });
       setMessage('Signup successful! Please login.');
       setView('login');
       setEmail('');
@@ -34,8 +34,8 @@ function App() {
     e.preventDefault();
     setMessage('');
     try {
-      await axios.post('http://localhost:5000/api/login', { email, password });
-      const res = await axios.get('http://localhost:5000/api/me');
+      await axios.post('http://localhost:5001/api/login', { email, password });
+      const res = await axios.get('http://localhost:5001/api/me');
       setUser(res.data);
       setView('home');
       setEmail('');
@@ -46,7 +46,7 @@ function App() {
   };
 
   const handleLogout = async () => {
-    await axios.post('http://localhost:5000/api/logout');
+    await axios.post('http://localhost:5001/api/logout');
     setUser(null);
     setView('login');
     setMessage('Logged out successfully.');
