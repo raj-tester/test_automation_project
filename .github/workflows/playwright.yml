@@ -7,27 +7,24 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-  actions: write
-  checks: write
-  deployments: write
-  issues: write
-  packages: write
-  pull-requests: write
-  repository-projects: write
-  security-events: write
-  statuses: write
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+      actions: write
+      checks: write
+      deployments: write
+      issues: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
+    
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -84,14 +81,4 @@ jobs:
     - name: Deploy Allure Report to GitHub Pages
       if: always()
       id: deployment
-      uses: actions/deploy-pages@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Upload test results
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: playwright-report
-        path: client/playwright-report/
-        retention-days: 30 
+      uses: actions/deploy-pages@v2 
